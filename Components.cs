@@ -1,0 +1,6 @@
+// Components.cs
+
+namespace Wuziqi
+{
+    
+}

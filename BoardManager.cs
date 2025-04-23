@@ -1,8 +1,14 @@
+using System.Runtime.Intrinsics.Arm;
+
 namespace Wuziqi
 {
     class BoardManager
     {
         private static readonly int Size = 16;
+
+        public ConsoleColor c1 = ConsoleColor.Green;
+        public ConsoleColor c2 = ConsoleColor.Red;
+        public ConsoleColor c3 = ConsoleColor.Yellow;
         public int[,] Grid2D = new int[Size,Size];
 
         public BoardManager()
@@ -25,10 +31,10 @@ namespace Wuziqi
         {
             Console.ResetColor();
 
-            Console.WriteLine();
+            //Console.WriteLine();
             Console.Write("      ");
 
-            Console.ForegroundColor = (playerturn == 1) ? ConsoleColor.Green : ConsoleColor.Red;
+            Console.ForegroundColor = (playerturn == 1) ? c1 : c2;
             for(int i = 0; i < Size; i++)
             {
                 Console.Write($"{i:D2}  ");
@@ -45,7 +51,7 @@ namespace Wuziqi
             for(int i = 0; i < Size; i++)
             {
                 Console.WriteLine();
-                Console.ForegroundColor = (playerturn == 1) ? ConsoleColor.Green : ConsoleColor.Red;
+                Console.ForegroundColor = (playerturn == 1) ? c1 : c2;
                 Console.Write($"{i:D2}");
                 Console.ResetColor();
                 Console.Write(" ---");
@@ -54,8 +60,8 @@ namespace Wuziqi
                 {
 
                     // check if cursor is here
-                    if ((mouseX == i) && (mouseY == j)){Console.ForegroundColor=ConsoleColor.Yellow;}
-                    else{Console.ForegroundColor = (Grid2D[i,j] == 1) ? ConsoleColor.Green : ConsoleColor.Red;}
+                    if ((mouseX == i) && (mouseY == j)){Console.ForegroundColor=c3;}
+                    else{Console.ForegroundColor = (Grid2D[i,j] == 1) ? c1 : c2;}
 
                     if (Grid2D[i,j] == 0)
                     {
@@ -74,7 +80,7 @@ namespace Wuziqi
                     Console.Write("---");
                 }
 
-                Console.ForegroundColor = (playerturn == 1) ? ConsoleColor.Green : ConsoleColor.Red;
+                Console.ForegroundColor = (playerturn == 1) ? c1 : c2;
                 Console.Write($" {i:D2}");
                 Console.ResetColor();
 
@@ -90,13 +96,13 @@ namespace Wuziqi
             Console.WriteLine();
             Console.Write("      ");
 
-            Console.ForegroundColor = (playerturn == 1) ? ConsoleColor.Green : ConsoleColor.Red;
+            Console.ForegroundColor = (playerturn == 1) ? c1 : c2;
             for(int i = 0; i < Size; i++)
             {
                 Console.Write($"{i:D2}  ");
             }
             Console.ResetColor();
-            Console.WriteLine("\n");
+            Console.WriteLine("");
         }
     
         public int CheckWinner()
